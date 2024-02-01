@@ -1,8 +1,11 @@
-import React from "react";
+import { StateContext } from "Context/StateContext";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-function Context({ arr, colorPlayer }) {
+function Context() {
+  const stateContext = useContext(StateContext);
+
   const overLength = (overContext) => {
     if (overContext) {
       return overContext.length > 20
@@ -31,7 +34,9 @@ function Context({ arr, colorPlayer }) {
     }
   };
 
-  const filteredArr = arr.filter((prev) => prev.player === colorPlayer);
+  const filteredArr = stateContext.arr.filter(
+    (prev) => prev.player === stateContext.colorPlayer
+  );
 
   return (
     <MainDiv>
@@ -54,7 +59,7 @@ function Context({ arr, colorPlayer }) {
           </ContextDiv>
         ))
       ) : (
-        <NoneMain>{playerChange(colorPlayer)}</NoneMain>
+        <NoneMain>{playerChange(stateContext.colorPlayer)}</NoneMain>
       )}
     </MainDiv>
   );

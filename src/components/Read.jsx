@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import Context from "./Context";
 import { v4 as uuidv4 } from "uuid";
+import { StateContext } from "Context/StateContext";
 
-function Read({ arr, setArr, colorPlayer }) {
+function Read() {
   const [name, setName] = useState("");
   const [context, setContext] = useState("");
   const [player, setPlayer] = useState("son");
+
+  const stateContext = useContext(StateContext);
 
   const submitFanletter = (event) => {
     event.preventDefault();
@@ -22,11 +25,11 @@ function Read({ arr, setArr, colorPlayer }) {
       time: time(),
       id: uuidv4(),
     };
-    const newArr = [...arr, newContext];
+    const newArr = [...stateContext.arr, newContext];
     localStorage.setItem("arr", JSON.stringify(newArr));
     const getLocal = localStorage.getItem("arr");
     const json = JSON.parse(getLocal);
-    setArr(json);
+    stateContext.setArr(json);
     setContext("");
     setName("");
   };
@@ -80,7 +83,7 @@ function Read({ arr, setArr, colorPlayer }) {
           </BtnDiv>
         </form>
       </ReadInput>
-      <Context arr={arr} colorPlayer={colorPlayer} />
+      <Context />
     </MainDiv>
   );
 }

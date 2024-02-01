@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import HeaderButton from "./HeaderButton";
 
-function Header({ setColorPlayer }) {
+function Header() {
   const [btnColor, setBtnColor] = useState({
     son: "yellow",
     kim: "black",
@@ -10,50 +10,32 @@ function Header({ setColorPlayer }) {
     hwang: "black",
   });
   const [clickMainColor, setClickMainColor] = useState("son");
+
+  const players = [
+    { player: "son", name: "손흥민" },
+    { player: "kim", name: "김민재" },
+    { player: "lee", name: "이강인" },
+    { player: "hwang", name: "황희찬" },
+  ];
+
   return (
     <HeaderStyle>
       <HeaderH1>축구국가대표팀 팬레터 콜렉션</HeaderH1>
       <HeaderDiv>
-        <HeaderButton
-          btnColor={btnColor}
-          setBtnColor={setBtnColor}
-          clickMainColor={clickMainColor}
-          setClickMainColor={setClickMainColor}
-          setColorPlayer={setColorPlayer}
-          player="son"
-        >
-          손흥민
-        </HeaderButton>
-        <HeaderButton
-          btnColor={btnColor}
-          setBtnColor={setBtnColor}
-          clickMainColor={clickMainColor}
-          setClickMainColor={setClickMainColor}
-          setColorPlayer={setColorPlayer}
-          player="kim"
-        >
-          김민재
-        </HeaderButton>
-        <HeaderButton
-          btnColor={btnColor}
-          setBtnColor={setBtnColor}
-          clickMainColor={clickMainColor}
-          setClickMainColor={setClickMainColor}
-          setColorPlayer={setColorPlayer}
-          player="lee"
-        >
-          이강인
-        </HeaderButton>
-        <HeaderButton
-          btnColor={btnColor}
-          setBtnColor={setBtnColor}
-          clickMainColor={clickMainColor}
-          setClickMainColor={setClickMainColor}
-          setColorPlayer={setColorPlayer}
-          player="hwang"
-        >
-          황희찬
-        </HeaderButton>
+        {players.map((prev) => {
+          return (
+            <HeaderButton
+              key={prev.player}
+              btnColor={btnColor}
+              setBtnColor={setBtnColor}
+              clickMainColor={clickMainColor}
+              setClickMainColor={setClickMainColor}
+              player={prev.player}
+            >
+              {prev.name}
+            </HeaderButton>
+          );
+        })}
       </HeaderDiv>
     </HeaderStyle>
   );

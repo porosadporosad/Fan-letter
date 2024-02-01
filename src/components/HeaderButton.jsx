@@ -1,4 +1,5 @@
-import React from "react";
+import { StateContext } from "Context/StateContext";
+import React, { useContext } from "react";
 import styled from "styled-components";
 
 function HeaderButton({
@@ -6,13 +7,14 @@ function HeaderButton({
   setBtnColor,
   clickMainColor,
   setClickMainColor,
-  setColorPlayer,
   player,
   children,
 }) {
+  const stateContext = useContext(StateContext);
+
   const onClickPlayer = (name) => {
     clickbtnColor(name);
-    setColorPlayer(name);
+    stateContext.setColorPlayer(name);
     setClickMainColor(name);
   };
 

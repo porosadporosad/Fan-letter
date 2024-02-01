@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Read from "../components/Read";
+import { StateContext } from "Context/StateContext";
 
 function Home() {
   const firstDate = [
@@ -51,16 +52,24 @@ function Home() {
       localStorage.setItem("arr", JSON.stringify(firstDate));
       setArr(firstDate);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [arr, setArr] = useState(firstDate);
   const [colorPlayer, setColorPlayer] = useState("son");
 
   return (
-    <div>
-      <Header colorPlayer={colorPlayer} setColorPlayer={setColorPlayer} />
-      <Read arr={arr} setArr={setArr} colorPlayer={colorPlayer} />
-    </div>
+    <StateContext.Provider
+      value={{
+        arr,
+        setArr,
+        colorPlayer,
+        setColorPlayer,
+      }}
+    >
+      <Header />
+      <Read />
+    </StateContext.Provider>
   );
 }
 
