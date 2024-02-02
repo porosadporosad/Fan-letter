@@ -38,17 +38,17 @@ export const firstDate = [
     id: "3",
   },
   {
-    name: "음바페아님",
-    context: "강인아 보고싶구나",
-    player: "lee",
-    time: "2024. 1. 30. 오후 4:42:11",
-    id: "4",
-  },
-  {
     name: "여진구",
     context: "잘생겨서 배우해도 될듯",
     player: "hwang",
     time: "2024. 1. 30. 오후 10:51:24",
+    id: "4",
+  },
+  {
+    name: "강인맘",
+    context: "대강인 결승전 결승골 가자",
+    player: "lee",
+    time: "2024. 2. 2. 오후 3:11:11",
     id: "5",
   },
 ];
