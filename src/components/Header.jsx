@@ -1,16 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import HeaderButton from "./HeaderButton";
 
 function Header() {
-  const [btnColor, setBtnColor] = useState({
-    son: "yellow",
-    kim: "black",
-    lee: "black",
-    hwang: "black",
-  });
-  const [clickMainColor, setClickMainColor] = useState("son");
-
   const players = [
     { player: "son", name: "손흥민" },
     { player: "kim", name: "김민재" },
@@ -24,14 +16,7 @@ function Header() {
       <HeaderDiv>
         {players.map((prev) => {
           return (
-            <HeaderButton
-              key={prev.player}
-              btnColor={btnColor}
-              setBtnColor={setBtnColor}
-              clickMainColor={clickMainColor}
-              setClickMainColor={setClickMainColor}
-              player={prev.player}
-            >
+            <HeaderButton key={prev.player} player={prev.player}>
               {prev.name}
             </HeaderButton>
           );
@@ -53,7 +38,6 @@ const HeaderStyle = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
 `;
 
 const HeaderH1 = styled.h1`

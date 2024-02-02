@@ -1,7 +1,7 @@
-import { ImgDiv, ImgStyle, SectionStyle } from "components/Context";
 import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
+import { ImgDiv, ImgStyle, SectionStyle } from "components/Context";
+import { useNavigate, useParams } from "react-router-dom";
 
 function Sub() {
   const nav = useNavigate();
@@ -125,7 +125,6 @@ const BodyStyle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
 `;
 
 const BtnStyle = styled.button`

@@ -1,15 +1,17 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Context from "./Context";
+import { array } from "../redux/modules/stateRedux";
+import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import { StateContext } from "Context/StateContext";
 
 function Read() {
   const [name, setName] = useState("");
   const [context, setContext] = useState("");
   const [player, setPlayer] = useState("son");
 
-  const stateContext = useContext(StateContext);
+  const arr = useSelector((state) => state.stateRedux.arr);
+  const dispatch = useDispatch();
 
   const submitFanletter = (event) => {
     event.preventDefault();
@@ -25,11 +27,11 @@ function Read() {
       time: time(),
       id: uuidv4(),
     };
-    const newArr = [...stateContext.arr, newContext];
+    const newArr = [...arr, newContext];
     localStorage.setItem("arr", JSON.stringify(newArr));
     const getLocal = localStorage.getItem("arr");
     const json = JSON.parse(getLocal);
-    stateContext.setArr(json);
+    dispatch(array(json));
     setContext("");
     setName("");
   };
@@ -107,6 +109,7 @@ const ReadInput = styled.div`
   background-color: #bebebe;
   border-radius: 10px;
   margin: 20px;
+  color: black;
 `;
 
 const NameInputStyle = styled.input`

@@ -1,10 +1,11 @@
-import { StateContext } from "Context/StateContext";
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function Context() {
-  const stateContext = useContext(StateContext);
+  const colorPlayer = useSelector((state) => state.stateRedux.colorPlayer);
+  const arr = useSelector((state) => state.stateRedux.arr);
 
   const overLength = (overContext) => {
     if (overContext) {
@@ -34,9 +35,7 @@ function Context() {
     }
   };
 
-  const filteredArr = stateContext.arr.filter(
-    (prev) => prev.player === stateContext.colorPlayer
-  );
+  const filteredArr = arr.filter((prev) => prev.player === colorPlayer);
 
   return (
     <MainDiv>
@@ -59,7 +58,7 @@ function Context() {
           </ContextDiv>
         ))
       ) : (
-        <NoneMain>{playerChange(stateContext.colorPlayer)}</NoneMain>
+        <NoneMain>{playerChange(colorPlayer)}</NoneMain>
       )}
     </MainDiv>
   );
@@ -71,7 +70,7 @@ const MainDiv = styled.div`
   display: flex;
   flex-direction: column;
   background-color: black;
-  color: white;
+
   width: 500px;
   border-radius: 5px;
   justify-content: center;
@@ -129,7 +128,7 @@ const ContextStyle = styled.p`
 
 const NoneMain = styled.div`
   background-color: black;
-  color: white;
+
   width: 500px;
   height: 50px;
   border-radius: 5px;
