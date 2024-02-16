@@ -47,22 +47,22 @@ function Home() {
     const json = JSON.parse(getLocal);
 
     if (json) {
-      setArr(json);
+      setFanLatterArr(json);
     } else {
       localStorage.setItem("arr", JSON.stringify(firstDate));
-      setArr(firstDate);
+      setFanLatterArr(firstDate);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const [arr, setArr] = useState(firstDate);
+  const [fanLatterArr, setFanLatterArr] = useState(firstDate);
   const [colorPlayer, setColorPlayer] = useState("son");
 
   return (
     <StateContext.Provider
       value={{
-        arr,
-        setArr,
+        fanLatterArr,
+        setFanLatterArr,
         colorPlayer,
         setColorPlayer,
       }}

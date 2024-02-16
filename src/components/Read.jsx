@@ -25,11 +25,11 @@ function Read() {
       time: time(),
       id: uuidv4(),
     };
-    const newArr = [...stateContext.arr, newContext];
+    const newArr = [...stateContext.fanLatterArr, newContext];
     localStorage.setItem("arr", JSON.stringify(newArr));
     const getLocal = localStorage.getItem("arr");
     const json = JSON.parse(getLocal);
-    stateContext.setArr(json);
+    stateContext.setFanLatterArr(json);
     setContext("");
     setName("");
   };

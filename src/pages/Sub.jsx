@@ -1,4 +1,5 @@
 import { ImgDiv, ImgStyle, SectionStyle } from "components/Context";
+import { userImg } from "img";
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
@@ -87,10 +88,7 @@ function Sub() {
         <SubMainStyle>
           <SectionStyle>
             <ImgDiv>
-              <ImgStyle
-                src="https://scontent-ssn1-1.xx.fbcdn.net/v/t39.30808-6/313270083_10161319226523836_2119858939192991777_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=NQ0q73ntRs8AX8YScHP&_nc_ht=scontent-ssn1-1.xx&oh=00_AfB9bapLro4_ZY_FuxVn8aCA3V06iort2BPUm5my2gyP6g&oe=65BE4707"
-                alt="유저 프로필 이미지"
-              />
+              <ImgStyle src={userImg} alt="유저 프로필 이미지" />
             </ImgDiv>
             <NameTime>
               <Name>{subMainDate.name}</Name>
