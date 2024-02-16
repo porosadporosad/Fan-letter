@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Context from "./Context";
 import { v4 as uuidv4 } from "uuid";
 
-function Read({ arr, setArr, colorPlayer }) {
+function Read({ fanLetterArr, setFanLetterArr, colorPlayer }) {
   const [name, setName] = useState("");
   const [context, setContext] = useState("");
   const [player, setPlayer] = useState("son");
@@ -22,11 +22,11 @@ function Read({ arr, setArr, colorPlayer }) {
       time: time(),
       id: uuidv4(),
     };
-    const newArr = [...arr, newContext];
+    const newArr = [...fanLetterArr, newContext];
     localStorage.setItem("arr", JSON.stringify(newArr));
     const getLocal = localStorage.getItem("arr");
     const json = JSON.parse(getLocal);
-    setArr(json);
+    setFanLetterArr(json);
     setContext("");
     setName("");
   };
@@ -80,7 +80,7 @@ function Read({ arr, setArr, colorPlayer }) {
           </BtnDiv>
         </form>
       </ReadInput>
-      <Context arr={arr} colorPlayer={colorPlayer} />
+      <Context fanLetterArr={fanLetterArr} colorPlayer={colorPlayer} />
     </MainDiv>
   );
 }

@@ -46,20 +46,24 @@ function Home() {
     const json = JSON.parse(getLocal);
 
     if (json) {
-      setArr(json);
+      setFanLetterArr(json);
     } else {
       localStorage.setItem("arr", JSON.stringify(firstDate));
-      setArr(firstDate);
+      setFanLetterArr(firstDate);
     }
   }, []);
 
-  const [arr, setArr] = useState(firstDate);
+  const [fanLetterArr, setFanLetterArr] = useState(firstDate);
   const [colorPlayer, setColorPlayer] = useState("son");
 
   return (
     <div>
       <Header colorPlayer={colorPlayer} setColorPlayer={setColorPlayer} />
-      <Read arr={arr} setArr={setArr} colorPlayer={colorPlayer} />
+      <Read
+        fanLetterArr={fanLetterArr}
+        setFanLetterArr={setFanLetterArr}
+        colorPlayer={colorPlayer}
+      />
     </div>
   );
 }
