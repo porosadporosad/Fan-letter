@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Header from "../components/Header";
 import Read from "../components/Read";
-import { array, firstDate } from "../redux/modules/stateRedux";
+import { fanLatterArray, firstDate } from "../redux/modules/stateRedux";
 import { useDispatch } from "react-redux";
 
 function Home() {
@@ -11,10 +11,10 @@ function Home() {
     const json = JSON.parse(getLocal);
 
     if (json) {
-      dispatch(array(json));
+      dispatch(fanLatterArray(json));
     } else {
       localStorage.setItem("arr", JSON.stringify(firstDate));
-      dispatch(array(firstDate));
+      dispatch(fanLatterArray(firstDate));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

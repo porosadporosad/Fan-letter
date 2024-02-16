@@ -1,9 +1,10 @@
-const ARR = "ARR";
+const FAN_LATTER_ARR = "FAN_LATTER_ARR";
 const COLOR_PLAYER = "COLOR_PLAYER";
+const FILTERD_ARR = "FILTERD_ARR";
 
-export const array = (payload) => {
+export const fanLatterArray = (payload) => {
   return {
-    type: ARR,
+    type: FAN_LATTER_ARR,
     payload,
   };
 };
@@ -12,6 +13,12 @@ export const color_player = (payload) => {
   return {
     type: COLOR_PLAYER,
     payload,
+  };
+};
+
+export const filterd_Arr = () => {
+  return {
+    type: FILTERD_ARR,
   };
 };
 
@@ -54,22 +61,31 @@ export const firstDate = [
 ];
 // 초기 상태값
 const initialState = {
-  arr: firstDate,
+  fanLatterArr: firstDate,
   colorPlayer: "son",
+  filterdArr: [],
 };
 
 // 리듀서
 const stateRedux = (state = initialState, action) => {
   switch (action.type) {
-    case ARR:
+    case FAN_LATTER_ARR:
       return {
         ...state,
-        arr: action.payload,
+        fanLatterArr: action.payload,
       };
     case COLOR_PLAYER:
       return {
         ...state,
         colorPlayer: action.payload,
+      };
+    case FILTERD_ARR:
+      const arr = state.fanLatterArr.filter(
+        (prev) => prev.player === state.colorPlayer
+      );
+      return {
+        ...state,
+        filterdArr: arr,
       };
     default:
       return state;

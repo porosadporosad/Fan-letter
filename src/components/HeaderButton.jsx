@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { color_player } from "../redux/modules/stateRedux";
+import { color_player, filterd_Arr } from "../redux/modules/stateRedux";
 import { btn_Color, click_Main_Color } from "../redux/modules/colorChange";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -16,6 +16,7 @@ function HeaderButton({ player, children }) {
     dispatch(color_player(name));
 
     dispatch(click_Main_Color(name));
+    dispatch(filterd_Arr());
   };
 
   const clickbtnColor = (player) => {

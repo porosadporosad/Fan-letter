@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Context from "./Context";
-import { array } from "../redux/modules/stateRedux";
+import { fanLatterArray } from "../redux/modules/stateRedux";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 
@@ -10,7 +10,7 @@ function Read() {
   const [context, setContext] = useState("");
   const [player, setPlayer] = useState("son");
 
-  const arr = useSelector((state) => state.stateRedux.arr);
+  const fanLatterArr = useSelector((state) => state.stateRedux.fanLatterArr);
   const dispatch = useDispatch();
 
   const submitFanletter = (event) => {
@@ -27,11 +27,11 @@ function Read() {
       time: time(),
       id: uuidv4(),
     };
-    const newArr = [...arr, newContext];
+    const newArr = [...fanLatterArr, newContext];
     localStorage.setItem("arr", JSON.stringify(newArr));
     const getLocal = localStorage.getItem("arr");
     const json = JSON.parse(getLocal);
-    dispatch(array(json));
+    dispatch(fanLatterArray(json));
     setContext("");
     setName("");
   };
